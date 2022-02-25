@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import './HomePage/homePage.dart';
+import 'ProfilePage/profilePage.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,7 +17,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(),
+      home: ProfilePage(),
     );
   }
 }

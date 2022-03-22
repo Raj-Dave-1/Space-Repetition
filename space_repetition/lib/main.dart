@@ -1,6 +1,7 @@
 // Dada Ki Jay Ho
 
 import 'package:flutter/material.dart';
+import 'package:spacerepetition/HomePage/AddTask/AddTaskScreen.dart';
 import './HomePage/homePage.dart';
 import 'ProfilePage/profilePage.dart';
 
@@ -17,7 +18,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ProfilePage(),
+      home: AddTaskScreen(),
     );
   }
 }

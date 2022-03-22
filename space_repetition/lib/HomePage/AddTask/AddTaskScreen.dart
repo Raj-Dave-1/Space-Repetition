@@ -1,10 +1,9 @@
 // 🚩 Dada Ki Jay Ho 🚩
 
-import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:spacerepetition/HomePage/AddTask/RevisionDate/RevisionDate.dart';
 
 class AddTaskScreen extends StatefulWidget {
   @override
@@ -55,10 +54,50 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
 
                   // Repetition Date
                   Container(
-                    color: Colors.orange,
-                    child: Text("date"),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 2, horizontal: 10),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 1,
+                        color: const Color(0xff434C5E).withOpacity(.3),
+                      ),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                     width: fullWidth,
-                    height: 100,
+                    height: fullHeight * .2,
+                    child: Row(
+                      children: [
+                        // chips
+                        Expanded(
+                          child: Container(
+//                            color: Colors.deepPurpleAccent,
+                            child: RevisionDateChips(),
+                          ),
+                        ),
+                        Container(
+//                          color: Colors.amber,
+                          child: Align(
+                            alignment: Alignment(1, 1),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xffccebff),
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: IconButton(
+                                icon: const Icon(
+                                  Icons.add,
+                                  color: Color(0xff434C5E),
+                                  size: 24,
+                                ),
+                                onPressed: () {
+                                  print("add Revision Date");
+                                },
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                   // notes
                   Container(

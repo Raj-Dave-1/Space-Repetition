@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import './HomePage/homePage.dart';
+import 'HomePage/AddTask/AddTaskScreen.dart';
 import 'ProfilePage/profilePage.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ProfilePage(),
+      home: AddTaskScreen(),
     );
   }
 }

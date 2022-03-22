@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import './HomePage/homePage.dart';
 import 'HomePage/AddTask/AddTaskScreen.dart';
+import 'ProfilePage/profilePage.dart';
 
 void main() {
   runApp(MyApp());

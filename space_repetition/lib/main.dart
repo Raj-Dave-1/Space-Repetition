@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:spacerepetition/HomePage/AddTask/AddTaskScreen.dart';
 import './HomePage/homePage.dart';
 import 'HomePage/AddTask/AddTaskScreen.dart';
-import 'ProfilePage/profilePage.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,7 +18,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: AddTaskScreen(),
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
     );
   }
 }

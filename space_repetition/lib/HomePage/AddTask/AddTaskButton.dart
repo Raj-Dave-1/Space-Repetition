@@ -12,8 +12,9 @@ class _AddTaskButtonState extends State<AddTaskButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.purpleAccent,
+//      color: Colors.purpleAccent,
       child: FloatingActionButton(
+        backgroundColor: Colors.redAccent,
         onPressed: () async {
           var returned_value = await Navigator.push(
               context,

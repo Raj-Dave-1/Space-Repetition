@@ -1,4 +1,4 @@
-
+// Dada Ki Jay Ho
 
 import 'package:flutter/material.dart';
 
@@ -10,18 +10,17 @@ class CreateProfile extends StatefulWidget {
 }
 
 class _CreateProfileState extends State<CreateProfile> {
-  DateTime date=DateTime(2022,12,24);
+  DateTime date = DateTime.now();
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
         child: ListView(
           children: <Widget>[
             nameTextField(),
             SizedBox(
-              height:20,
+              height: 20,
             ),
             emailTextField(),
 
@@ -29,38 +28,32 @@ class _CreateProfileState extends State<CreateProfile> {
               height: 20,
             ),
 
-                //mainAxisAlignment: MainAxisAlignment.center,
+            //mainAxisAlignment: MainAxisAlignment.center,
 
-                    Row(
-                      children: [
-                        Text(
-                          '${date.day}/${date.month}/${date.year}',
-                          style: TextStyle(fontSize: 20),
-
-                        ),
-                        const SizedBox(height: 16),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(50, 0, 0, 0),
-
-                          child: ElevatedButton(
-
-
-                            child: Text('Select DOB'),
-
-                            onPressed:()async {
-                              DateTime?newDate =await
-                              showDatePicker(context: context, initialDate: date, firstDate:DateTime(1900), lastDate: DateTime(2100));
-                              if(newDate==null)return;
-                              setState(()=>date=newDate);
-                            },
-                          ),
-                        ),
-                      ],
-
-                    ),
-
-
-
+            Row(
+              children: [
+                Text(
+                  '${date.day}/${date.month}/${date.year}',
+                  style: TextStyle(fontSize: 20),
+                ),
+                const SizedBox(height: 16),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(50, 0, 0, 0),
+                  child: ElevatedButton(
+                    child: Text('Select DOB'),
+                    onPressed: () async {
+                      DateTime? newDate = await showDatePicker(
+                          context: context,
+                          initialDate: date,
+                          firstDate: DateTime(1900),
+                          lastDate: DateTime(2100));
+                      if (newDate == null) return;
+                      setState(() => date = newDate);
+                    },
+                  ),
+                ),
+              ],
+            ),
 
             SizedBox(
               height: 20,
@@ -69,61 +62,51 @@ class _CreateProfileState extends State<CreateProfile> {
             SizedBox(
               height: 20,
             ),
-            Button(),
+            Button(context),
           ],
         ),
       ),
     );
   }
 }
-Widget nameTextField()
-{
 
+Widget nameTextField() {
   return TextFormField(
     decoration: InputDecoration(
       border: OutlineInputBorder(
-        borderSide: BorderSide(
-          color:Colors.teal,
-
-        )
-      ),
+          borderSide: BorderSide(
+        color: Colors.teal,
+      )),
       focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.orange,
-            width:2,
-
-          )
-      ),
-      prefixIcon: Icon(Icons.person,
-      color: Colors.green,
+        color: Colors.orange,
+        width: 2,
+      )),
+      prefixIcon: Icon(
+        Icons.person,
+        color: Colors.green,
       ),
       labelText: "Name",
-        helperText: "Field can't be empty",
-        hintText: "First Name",
+      helperText: "Field can't be empty",
+      hintText: "First Name",
     ),
-
   );
-
-
 }
-Widget emailTextField(){
 
+Widget emailTextField() {
   return TextFormField(
     decoration: InputDecoration(
       border: OutlineInputBorder(
           borderSide: BorderSide(
-            color:Colors.teal,
-
-          )
-      ),
+        color: Colors.teal,
+      )),
       focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.orange,
-            width:2,
-
-          )
-      ),
-      prefixIcon: Icon(Icons.email,
+        color: Colors.orange,
+        width: 2,
+      )),
+      prefixIcon: Icon(
+        Icons.email,
         color: Colors.green,
       ),
       labelText: "Email",
@@ -131,28 +114,22 @@ Widget emailTextField(){
       hintText: "xyz@gmail.com",
     ),
   );
-
-
 }
 
-Widget phonenoTextField(){
-
+Widget phonenoTextField() {
   return TextFormField(
     decoration: InputDecoration(
       border: OutlineInputBorder(
           borderSide: BorderSide(
-            color:Colors.teal,
-
-          )
-      ),
+        color: Colors.teal,
+      )),
       focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.orange,
-            width:2,
-
-          )
-      ),
-      prefixIcon: Icon(Icons.phone,
+        color: Colors.orange,
+        width: 2,
+      )),
+      prefixIcon: Icon(
+        Icons.phone,
         color: Colors.green,
       ),
       labelText: "Phone No",
@@ -160,36 +137,30 @@ Widget phonenoTextField(){
       hintText: "10 digit phone no",
     ),
   );
-
-
 }
-Widget Button()
-{
+
+Widget Button(BuildContext context) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 70),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
-
       children: <Widget>[
-
         InkWell(
-          onTap: () => {
-
-          },
+          onTap: () => {Navigator.pop(context)},
           child: Container(
             height: 60,
             width: 500,
             decoration: BoxDecoration(
-                color: Colors.green,
-                borderRadius: BorderRadius.circular(20)
-            ),
+                color: Colors.green, borderRadius: BorderRadius.circular(20)),
             child: Center(
-              child: Text("Done",style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-
-              ),),
+              child: Text(
+                "Done",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
+              ),
             ),
           ),
         )

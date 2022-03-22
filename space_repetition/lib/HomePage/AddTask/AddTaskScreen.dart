@@ -11,12 +11,29 @@ class AddTaskScreen extends StatefulWidget {
 }
 
 class _AddTaskScreenState extends State<AddTaskScreen> {
+  DateTime date = DateTime.now();
+  List<String> monthsArray = [
+    "Jan",
+    "Feb",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "Auguest",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec"
+  ];
+
   @override
   Widget build(BuildContext context) {
     final double fullWidth = MediaQuery.of(context).size.width;
     final double fullHeight = MediaQuery.of(context).size.height;
+    final double boxwidth = fullWidth * 0.43;
     return Scaffold(
-      backgroundColor: Colors.indigo,
+//      backgroundColor: Colors.indigo,
       body: SafeArea(
         child: Container(
           color: Colors.white,
@@ -43,7 +60,68 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         // Due Date
-                        DueDate(fullHeight, fullWidth),
+
+                        GestureDetector(
+                          onTap: () async {
+                            DateTime? newDate = await showDatePicker(
+                                context: context,
+                                initialDate: date,
+                                firstDate: DateTime.now(),
+                                lastDate: DateTime(2100));
+                            if (newDate == null) return;
+                            setState(() => date = newDate);
+                            print("changes done");
+                          },
+                          child: Container(
+                            width: boxwidth,
+                            height: 68,
+                            decoration: BoxDecoration(
+//        color: Colors.green,
+                              border: Border.all(
+                                color: Color(0xff434C5E).withOpacity(.3),
+                              ),
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15),
+                                    color: Color(0xffEFF0F8),
+                                  ),
+                                  margin: EdgeInsets.only(left: 12, right: 14),
+                                  padding: EdgeInsets.all(11),
+                                  child: const Icon(
+                                    FontAwesomeIcons.calendarCheck,
+                                    size: 22,
+                                    color: Color(0xff434C5E),
+                                  ),
+                                ),
+                                Container(
+//            color: Colors.blue,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const Text(
+                                        "Due Date",
+                                        style: TextStyle(fontSize: 13),
+                                      ),
+                                      const SizedBox(
+                                        height: 6,
+                                      ),
+                                      Text(
+                                        "${date.day}, ${monthsArray[date.month - 1]} ${date.year}",
+                                        style: TextStyle(fontSize: 13),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                         // Priority
                         PrioritySelector(fullHeight, fullWidth),
                       ],
@@ -100,19 +178,19 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     ),
                   ),
                   // notes
-                  Container(
-                    color: Colors.deepPurpleAccent,
-                    child: Text("notes"),
-                    width: fullWidth,
-                    height: 100,
-                  ),
+//                  Container(
+//                    color: Colors.deepPurpleAccent,
+//                    child: Text("notes"),
+//                    width: fullWidth,
+//                    height: 100,
+//                  ),
                   // url
-                  Container(
-                    color: Colors.cyan,
-                    child: Text("url"),
-                    width: fullWidth,
-                    height: 55,
-                  ),
+//                  Container(
+//                    color: Colors.cyan,
+//                    child: Text("url"),
+//                    width: fullWidth,
+//                    height: 55,
+//                  ),
                 ],
               ),
             ),
@@ -248,65 +326,77 @@ class SubTask extends StatelessWidget {
     );
   }
 }
-
-class DueDate extends StatelessWidget {
-  double fullWidth, fullHeight;
-
-  DueDate(this.fullHeight, this.fullWidth);
-
-  @override
-  Widget build(BuildContext context) {
-    double boxwidth = fullWidth * 0.43;
-    return Container(
-      width: boxwidth,
-      height: 68,
-      decoration: BoxDecoration(
-//        color: Colors.green,
-        border: Border.all(
-          color: Color(0xff434C5E).withOpacity(.3),
-        ),
-        borderRadius: BorderRadius.circular(30),
-      ),
-      child: Row(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: Color(0xffEFF0F8),
-            ),
-            margin: EdgeInsets.only(left: 12, right: 14),
-            padding: EdgeInsets.all(11),
-            child: const Icon(
-              FontAwesomeIcons.calendarCheck,
-              size: 22,
-              color: Color(0xff434C5E),
-            ),
-          ),
-          Container(
-//            color: Colors.blue,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text(
-                  "Due Date",
-                  style: TextStyle(fontSize: 13),
-                ),
-                SizedBox(
-                  height: 6,
-                ),
-                Text(
-                  "26 April, 22",
-                  style: TextStyle(fontSize: 13),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+//
+//class DueDate extends StatelessWidget {
+//  double fullWidth, fullHeight;
+//  DateTime date;
+//
+//  DueDate(this.fullHeight, this.fullWidth, this.date);
+//
+//  @override
+//  Widget build(BuildContext context) {
+//    double boxwidth = fullWidth * 0.43;
+//    return GestureDetector(
+//      onTap: () async {
+//      DateTime? newDate = await showDatePicker(
+//          context: context,
+//          initialDate: date,
+//          firstDate: DateTime(1900),
+//          lastDate: DateTime(2100));
+//      if (newDate == null) return;
+//      setState(() => date = newDate);
+//    },
+//      child: Container(
+//        width: boxwidth,
+//        height: 68,
+//        decoration: BoxDecoration(
+////        color: Colors.green,
+//          border: Border.all(
+//            color: Color(0xff434C5E).withOpacity(.3),
+//          ),
+//          borderRadius: BorderRadius.circular(30),
+//        ),
+//        child: Row(
+//          children: [
+//            Container(
+//              decoration: BoxDecoration(
+//                borderRadius: BorderRadius.circular(15),
+//                color: Color(0xffEFF0F8),
+//              ),
+//              margin: EdgeInsets.only(left: 12, right: 14),
+//              padding: EdgeInsets.all(11),
+//              child: const Icon(
+//                FontAwesomeIcons.calendarCheck,
+//                size: 22,
+//                color: Color(0xff434C5E),
+//              ),
+//            ),
+//            Container(
+////            color: Colors.blue,
+//              child: Column(
+//                crossAxisAlignment: CrossAxisAlignment.start,
+//                mainAxisAlignment: MainAxisAlignment.center,
+//                children: const [
+//                  Text(
+//                    "Due Date",
+//                    style: TextStyle(fontSize: 13),
+//                  ),
+//                  SizedBox(
+//                    height: 6,
+//                  ),
+//                  Text(
+//                    "26 April, 22",
+//                    style: TextStyle(fontSize: 13),
+//                  ),
+//                ],
+//              ),
+//            ),
+//          ],
+//        ),
+//      ),
+//    );
+//  }
+//}
 
 class PrioritySelector extends StatelessWidget {
   double fullWidth, fullHeight;

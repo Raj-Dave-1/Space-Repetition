@@ -17,13 +17,25 @@ class _HomePageState extends State<HomePage> {
   double iconSize = 36;
   List<Widget> pages = [
     Container(
-      child: Center(child: Text("HomePage")),
+      child: Center(
+          child: Text(
+        "HomePage",
+        style: TextStyle(color: Colors.white),
+      )),
     ),
     Container(
-      child: Center(child: Text("Pomodoro")),
+      child: Center(
+          child: Text(
+        "Pomodoro",
+        style: TextStyle(color: Colors.white),
+      )),
     ),
     Container(
-      child: Center(child: Text("Calender")),
+      child: Center(
+          child: Text(
+        "Calender",
+        style: TextStyle(color: Colors.white),
+      )),
     ),
     CreateProfile(),
   ];
@@ -43,7 +55,7 @@ class _HomePageState extends State<HomePage> {
           : Container(),
       bottomNavigationBar: Container(
         height: 60,
-        color: Colors.blue,
+//        color: Colors.blue,
         child: FittedBox(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

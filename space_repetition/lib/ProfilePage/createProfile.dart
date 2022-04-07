@@ -1,5 +1,6 @@
 // Dada Ki Jay Ho
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CreateProfile extends StatefulWidget {
@@ -147,7 +148,16 @@ Widget Button(BuildContext context) {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         InkWell(
-          onTap: () => {Navigator.pop(context)},
+          onTap: () => {
+            showDialog(
+                context: context,
+                builder: (context) => CupertinoAlertDialog(
+                      title: Text("Are You Sure"),
+                      actions: [Text("Yes"), Text("No")],
+                      content: Text("Just Testing"),
+                    ),
+            ),
+          },
           child: Container(
             height: 60,
             width: 500,
